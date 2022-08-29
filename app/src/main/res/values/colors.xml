@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#2196F3</color>
+    <color name="primaryVariant">#3700B3</color>
+    <color name="secondary">#1A1A1A</color>
+    <color name="secondaryVariant">#018786</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="error">#B00020</color>
+
+    <color name="onPrimary">#000000</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="onBackground">#333333</color>
+    <color name="onSurface">#000000</color>
+    <color name="onSurfaceSecondary">#9E9E9E</color>
+    <color name="onSurfaceDisabled">#60000000</color>
+    <color name="onError">#FFFFFF</color>
+
+    <color name="divider">#1F000000</color>
+    <color name="tintedSurface">#FFFFFF</color>
+
+    <color name="secondaryDark">#ffffff</color>
+
+    <color name="backgroundDark">#000000</color>
+    <color name="surfaceDark">#000000</color>
+    <color name="errorDark">#cf6679</color>
+
+    <color name="onPrimaryDark">#000000</color>
+    <color name="onSecondaryDark">#000000</color>
+    <color name="onBackgroundDark">#ffffff</color>
+    <color name="onSurfaceDark">#ffffff</color>
+    <color name="onSurfaceSecondaryDark">#eeeeee</color>
+    <color name="onSurfaceDisabledDark">#60ffffff</color>
+    <color name="onErrorDark">#000000</color>
+
+    <color name="dividerDark">#1FFFFFFF</color>
+    <color name="tintedSurfaceDark">#262626</color>
+</resources>

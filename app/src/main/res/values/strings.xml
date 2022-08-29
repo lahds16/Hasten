@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Hasten</string>
+    <string name="text_phone">Enter your phone number</string>
+    <string name="info_phone">Please confirm your country code and enter your phone number.</string>
+    <string name="hint_phone">Phone number</string>
+    <string name="hint_country">CC</string>
+    <string name="text_verify">Verify now</string>
+    <string name="text_code">Your verification code</string>
+    <string name="info_code">Enter the verification code we\'ve sent to: </string>
+    <string name="text_continue">Continue</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_profile">Edit your profile</string>
+    <string name="bio">Your bio</string>
+    <string name="info_bio">Add a few lines about yourself.</string>
+    <string name="info_username">How the others will find you.</string>
+    <string name="username">Username</string>
+    <string name="info_name">What should people call you?</string>
+    <string name="name">Your name</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="search">Search</string>
+</resources>
