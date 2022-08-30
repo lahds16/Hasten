@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import lahds.hasten.R
 import lahds.hasten.app.utils.Utilities
 import lahds.hasten.ui.components.BaseFragment
-import lahds.hasten.ui.models.User
 
 class LaunchActivity : AppCompatActivity() {
 
@@ -25,25 +21,26 @@ class LaunchActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         if (auth.currentUser != null) {
-            database.reference.child("Users").child(auth.uid!!).
+            /*database.reference.child("Users").child(auth.uid!!).
             addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val user = snapshot.getValue(User::class.java)
                     if (user != null) {
                         presentFragment(HomeActivity())
                     } else {
-                        presentFragment(EditProfileActivity())
+                        presentFragment(EditProfileActivity(), false)
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}
-            })
+            })*/
+            presentFragment(HomeActivity())
         } else {
             presentFragment(LoginActivity(), false)
         }
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount <= 1) {
+        if (supportFragmentManager.backStackEntryCount <= 2) {
             finish()
         } else {
             super.onBackPressed()
@@ -81,7 +78,7 @@ class LaunchActivity : AppCompatActivity() {
 
         fun presentFragment(fragment: BaseFragment, withBackStack: Boolean = true) {
             val transaction = activity.supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, fragment)
+            transaction.add(R.id.container, fragment)
             if (withBackStack) {
                 transaction.addToBackStack(fragment.tag)
             }

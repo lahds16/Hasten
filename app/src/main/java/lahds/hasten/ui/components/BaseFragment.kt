@@ -20,22 +20,22 @@ open class BaseFragment : Fragment() {
         exitTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, true
         ).apply {
-            duration = 200L
+            duration = 250L
         }
         reenterTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, false
         ).apply {
-            duration = 200L
+            duration = 250L
         }
         enterTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, true
         ).apply {
-            duration = 200L
+            duration = 250L
         }
         returnTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, false
         ).apply {
-            duration = 200L
+            duration = 250L
         }
     }
 
@@ -44,7 +44,10 @@ open class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return createView()
+        val parent = createView()
+        parent.isClickable = true
+        parent.isFocusable = true
+        return parent
     }
 
     open fun createView(): View {

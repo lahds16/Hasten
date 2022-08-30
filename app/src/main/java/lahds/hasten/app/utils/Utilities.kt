@@ -6,11 +6,20 @@ import android.transition.TransitionManager
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import kotlin.math.ceil
 
 object Utilities {
+    var density = 1f
+
+    fun dp(value: Float): Int {
+        return if (value == 0f) {
+            0
+        } else ceil((density * value).toDouble()).toInt()
+    }
+
     fun transition(view: View) {
         val autoTransition = AutoTransition()
-        autoTransition.duration = 200L
+        autoTransition.duration = 250L
         TransitionManager.beginDelayedTransition(view as ViewGroup?, autoTransition)
     }
 

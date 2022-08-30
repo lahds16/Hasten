@@ -55,60 +55,65 @@
             android:text="@string/select_photo"
             android:textColor="@color/white"/>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/textInput"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:layout_marginTop="15dp"
-                app:helperText="@string/info_name">
+                android:orientation="vertical"
+                android:paddingTop="15dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_name"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnPrimary"
-                    android:padding="15dp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/name"
+                    android:layout_marginTop="15dp"
+                    app:helperText="@string/info_name">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/textInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/username"
-                android:layout_marginTop="15dp"
-                app:helperText="@string/info_username">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:padding="15dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_username"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnPrimary"
-                    android:padding="15dp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/username"
+                    android:layout_marginTop="15dp"
+                    app:helperText="@string/info_username">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/textInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/bio"
-                android:layout_marginTop="15dp"
-                app:helperText="@string/info_bio">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:padding="15dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_bio"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnPrimary"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                    android:hint="@string/bio"
+                    android:layout_marginTop="15dp"
+                    app:helperText="@string/info_bio">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnPrimary" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <Button

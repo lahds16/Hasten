@@ -13,8 +13,6 @@ import lahds.hasten.ui.models.User
 class EditProfileActivity : BaseFragment() {
     private lateinit var binding: ActivityEditProfileBinding
 
-    private lateinit var user: User
-
     override fun createView(): View {
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         return binding.root
@@ -24,10 +22,12 @@ class EditProfileActivity : BaseFragment() {
         database.reference.child("Users").child(auth.uid!!).
         addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                user = snapshot.getValue(User::class.java)!!
-                binding.textName.setText(user.name)
-                binding.textUsername.setText(user.username)
-                binding.textBio.setText(user.bio)
+                if (snapshot.exists()) {
+                    val data = snapshot.getValue(User::class.java)!!
+                    binding.textName.setText(data.name)
+                    binding.textUsername.setText(data.username)
+                    binding.textBio.setText(data.bio)
+                }
             }
             override fun onCancelled(error: DatabaseError) {
                 Snackbar.make(binding.root, error.message, Snackbar.LENGTH_LONG).show()
@@ -39,32 +39,35 @@ class EditProfileActivity : BaseFragment() {
 
         binding.textContinue.setOnClickListener {
 
+            var bio = ""
+            var username = ""
+
             if (binding.textName.text.isNullOrEmpty()) {
                 binding.textName.error = "This is required."
             } else {
-                val name = binding.textName.text.toString()
+                val name = binding.textName.text.toString().trim()
 
-                var username = ""
-                var bio = ""
                 if (!binding.textUsername.text.isNullOrEmpty()) {
-                    username = binding.textUsername.text.toString()
+                    username = binding.textUsername.text.toString().trim()
                 }
+
                 if (!binding.textBio.text.isNullOrEmpty()) {
-                    bio = binding.textUsername.text.toString()
+                    bio = binding.textBio.text.toString().trim()
                 }
 
-                user = User(name, username, bio, userId!!, phoneNo!!)
+                val user = User(name, username, bio, userId!!, phoneNo!!)
 
-                database.reference.child("Users").child(auth.uid!!).setValue(user)
-                    .addOnSuccessListener {
-                        presentFragment(HomeActivity())
-                    }
+                database.reference
+                    .child("Users")
+                    .child(userId)
+                    .setValue(user)
             }
         }
 
         binding.textName.addTextChangedListener {
             if (binding.textAvatar.text.isNotEmpty()) {
-                binding.textAvatar.text = binding.textName.text.toString()[0].uppercase()
+                val text = binding.textName.text.toString()
+                binding.textAvatar.text = text[0].uppercase()
             }
         }
     }

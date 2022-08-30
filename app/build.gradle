@@ -33,6 +33,7 @@ android {
         release {
             minifyEnabled false
             signingConfig signingConfigs.release
+            debuggable true
         }
     }
     buildFeatures {
