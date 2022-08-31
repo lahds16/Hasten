@@ -52,8 +52,13 @@ class ChatsAdapter(private var context: Context, private var chats: ArrayList<Us
 
                 override fun onCancelled(error: DatabaseError) {}
             })
-        holder.binding.textName.text = user.name
-        holder.binding.textAvatar.text = user.name[0].toString()
+        if (user.username != "") {
+            holder.binding.textName.text = user.username
+            holder.binding.textAvatar.text = user.username[0].toString().uppercase()
+        } else {
+            holder.binding.textName.text = user.name
+            holder.binding.textAvatar.text = user.name[0].toString().uppercase()
+        }
 
         holder.itemView.setOnClickListener {
             LaunchActivity.arguments = user.userId

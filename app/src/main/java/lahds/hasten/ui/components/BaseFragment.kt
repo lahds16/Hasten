@@ -1,5 +1,6 @@
 package lahds.hasten.ui.components
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,22 +21,22 @@ open class BaseFragment : Fragment() {
         exitTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, true
         ).apply {
-            duration = 250L
+            duration = 300L
         }
         reenterTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, false
         ).apply {
-            duration = 250L
+            duration = 300L
         }
         enterTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, true
         ).apply {
-            duration = 250L
+            duration = 300L
         }
         returnTransition = MaterialSharedAxis(
             MaterialSharedAxis.Z, false
         ).apply {
-            duration = 250L
+            duration = 300L
         }
     }
 
@@ -47,6 +48,7 @@ open class BaseFragment : Fragment() {
         val parent = createView()
         parent.isClickable = true
         parent.isFocusable = true
+        parent.setBackgroundColor(Theme.background)
         return parent
     }
 
@@ -58,13 +60,16 @@ open class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = LaunchActivity.auth
         database = LaunchActivity.database
-
+        updateViews()
         initialize()
     }
 
     open fun initialize() {}
 
-    open fun presentFragment(fragment: BaseFragment, withBackStack: Boolean = false) {
-        LaunchActivity.presentFragment(fragment, withBackStack)
+    override fun onConfigurationChanged(configuration: Configuration) {
+        super.onConfigurationChanged(configuration)
+        updateViews()
     }
+
+    open fun updateViews() {}
 }

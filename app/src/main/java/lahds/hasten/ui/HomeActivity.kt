@@ -22,11 +22,11 @@ class HomeActivity : BaseFragment() {
     }
 
     override fun initialize() {
-        initWindow()
+        initUser()
         initAnimations()
 
         binding.fab.setOnClickListener {
-            presentFragment(CreateChatActivity())
+            LaunchActivity.presentFragment(CreateChatActivity())
         }
 
         val chatsAdapter = ChatsAdapter(requireContext(), chats)
@@ -36,7 +36,7 @@ class HomeActivity : BaseFragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children) {
                     val user = item.getValue(User::class.java)
-                    if (user!!.userId == auth.uid) {
+                    if (user!!.userId != auth.uid) {
                         chats.add(user)
                         chatsAdapter.notifyItemInserted(chats.size)
                     }
@@ -47,7 +47,16 @@ class HomeActivity : BaseFragment() {
         })
     }
 
-    private fun initWindow() {
+    private fun initUser() {
+        database.reference.child("Users").child(auth.uid!!).
+        addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(User::class.java)!!
+                binding.textAvatar.text = user.name[0].toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     private fun initAnimations() {

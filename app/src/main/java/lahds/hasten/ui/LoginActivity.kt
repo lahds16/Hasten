@@ -8,21 +8,15 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import lahds.hasten.R
 import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityLoginBinding
 import lahds.hasten.ui.components.BaseFragment
-import lahds.hasten.ui.models.User
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : BaseFragment() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var authenticationId: String
-    var existsInDatabase = false
 
     override fun createView(): View {
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -32,21 +26,11 @@ class LoginActivity : BaseFragment() {
     override fun initialize() {
         initializeView()
 
-        database.reference.child("Users").child(LaunchActivity.auth.uid!!).
-        addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(User::class.java)
-                existsInDatabase = user != null
-            }
-            override fun onCancelled(error: DatabaseError) {}
-        })
-
         binding.buttonContinue.setOnClickListener {
             it.isEnabled = false
             val phoneNo = binding.textCountry.text.toString() + binding.textPhone.text.toString()
-            binding.infoCode.text = resources.getString(R.string.info_code) + phoneNo
             if (phoneNo != "") {
-                binding.infoCode.text = resources.getText(R.string.info_code, phoneNo)
+                binding.infoCode.text = "Enter the verification code we've sent to: $phoneNo"
                 sendVerificationCode(phoneNo)
             }
         }
@@ -115,9 +99,7 @@ class LoginActivity : BaseFragment() {
             ) { task ->
                 if (task.isSuccessful) {
                     if (auth.currentUser != null) {
-                        if (existsInDatabase) {
-                            presentFragment(EditProfileActivity(), false)
-                        }
+                        LaunchActivity.presentFragment(EditProfileActivity(), false)
                     }
                 } else {
                     binding.buttonVerify.isEnabled = true

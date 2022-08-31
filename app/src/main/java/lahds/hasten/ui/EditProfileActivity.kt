@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityEditProfileBinding
 import lahds.hasten.ui.components.BaseFragment
 import lahds.hasten.ui.models.User
@@ -19,6 +20,7 @@ class EditProfileActivity : BaseFragment() {
     }
 
     override fun initialize() {
+        Utilities.animateClick(binding.textContinue)
         database.reference.child("Users").child(auth.uid!!).
         addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -44,7 +46,9 @@ class EditProfileActivity : BaseFragment() {
 
             if (binding.textName.text.isNullOrEmpty()) {
                 binding.textName.error = "This is required."
+                binding.textContinue.isEnabled = true
             } else {
+                binding.textContinue.isEnabled = false
                 val name = binding.textName.text.toString().trim()
 
                 if (!binding.textUsername.text.isNullOrEmpty()) {

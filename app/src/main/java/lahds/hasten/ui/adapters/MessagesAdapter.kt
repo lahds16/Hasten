@@ -1,9 +1,13 @@
 package lahds.hasten.ui.adapters
 
 import android.content.Context
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import lahds.hasten.R
@@ -24,6 +28,7 @@ class MessagesAdapter(
     private val itemReceive = 2
     private var senderRoom: String
     private var receiverRoom: String
+    private var eraser = Paint()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == itemSent) {
@@ -53,13 +58,6 @@ class MessagesAdapter(
         if (holder.javaClass == SentViewHolder::class.java) {
             viewHolder = holder as SentViewHolder
             viewHolder.binding.textMessage.text = message.message
-
-            if (message.isRead) {
-                viewHolder.binding.icRead.setImageResource(R.drawable.message_read)
-            } else {
-                viewHolder.binding.icRead.setImageResource(R.drawable.message_sent)
-            }
-
         } else {
             viewHolder = holder as ReceiveViewHolder
             viewHolder.binding.textMessage.text = message.message
@@ -90,5 +88,11 @@ class MessagesAdapter(
         this.messages = messages
         this.senderRoom = senderRoom
         this.receiverRoom = receiverRoom
+    }
+
+    private fun setupEraser() {
+        eraser.color = ContextCompat.getColor(context, android.R.color.transparent)
+        eraser.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        eraser.isAntiAlias = true
     }
 }
