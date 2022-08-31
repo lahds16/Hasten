@@ -4,15 +4,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="2dp"
-    android:layout_marginStart="40dp"
+    android:layout_marginStart="50dp"
     android:layout_marginEnd="6dp"
     android:gravity="center|end">
 
     <LinearLayout
+        android:id="@+id/drawable"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/sent_drawable">
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/text_message"
@@ -24,13 +25,13 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:textColor="@color/white"/>
-
-        <ImageView
-            android:id="@+id/ic_read"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/message_read"
-            android:paddingEnd="8dp"
-            android:layout_gravity="bottom"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Delivered at 2:00 PM"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 </LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="receiveBubble">#272A31</color>
+    <color name="receiveText">#FFFFFF</color>
+</resources>

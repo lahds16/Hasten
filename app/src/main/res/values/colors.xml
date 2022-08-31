@@ -39,4 +39,7 @@
 
     <color name="dividerDark">#1FFFFFFF</color>
     <color name="tintedSurfaceDark">#262626</color>
+
+    <color name="receiveBubble">#EEEEEE</color>
+    <color name="receiveText">#FFFFFF</color>
 </resources>

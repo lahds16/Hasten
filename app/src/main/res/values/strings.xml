@@ -11,12 +11,13 @@
     <string name="cancel">Cancel</string>
     <string name="edit_profile">Edit your profile</string>
     <string name="bio">Add a bio</string>
-    <string name="info_bio">Add a few lines about yourself.</string>
-    <string name="info_username">How the others will find you.</string>
+    <string name="info_bio">Add a few lines about yourself. [Optional]</string>
+    <string name="info_username">How the others will find you. [Optional]</string>
     <string name="username">Username</string>
-    <string name="info_name">What should people call you?</string>
+    <string name="info_name">What should people call you? [Required]</string>
     <string name="name">Your name</string>
     <string name="select_photo">Select Photo</string>
     <string name="search">Search</string>
     <string name="message">Message</string>
+    <string name="create_group">Create group</string>
 </resources>

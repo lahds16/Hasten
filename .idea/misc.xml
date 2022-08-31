@@ -12,15 +12,19 @@
         <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/input_send.xml" value="0.1255" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/message_sent.xml" value="0.1255" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/receive_drawable.xml" value="0.1255" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/receive_mid.xml" value="0.129" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/receive_top.xml" value="0.129" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/drawable/sent_drawable.xml" value="0.1255" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_chat.xml" value="0.25" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_chat_background.xml" value="0.17255434782608695" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_create_chat.xml" value="0.33" />
-        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_edit_profile.xml" value="0.33" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_edit_profile.xml" value="0.27893738140417457" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_launch.xml" value="0.17255434782608695" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/activity_settings.xml" value="0.12636612021857924" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/layout_chat.xml" value="0.33" />
-        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/layout_receive.xml" value="0.16757246376811594" />
-        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/layout_sent.xml" value="0.75" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/layout_receive.xml" value="0.67" />
+        <entry key="..\:/Experiments/Hasten/app/src/main/res/layout/layout_sent.xml" value="0.5" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/menu/menu_chat.xml" value="0.2" />
         <entry key="..\:/Experiments/Hasten/app/src/main/res/menu/menu_home.xml" value="0.2" />
       </map>

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -11,6 +12,7 @@
         app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_back"
@@ -41,7 +43,7 @@
                         android:id="@+id/text_avatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"
                         android:background="?attr/colorPrimary"/>
@@ -63,16 +65,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="lahds14"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/medium"/>
+                            android:textSize="16sp"
+                            android:fontFamily="@font/medium"
+                            android:textColor="?colorOnPrimary"/>
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
+                            android:visibility="gone"
                             android:src="@drawable/badge_verified"/>
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_presence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"/>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
