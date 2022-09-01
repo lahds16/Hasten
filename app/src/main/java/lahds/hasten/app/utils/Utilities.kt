@@ -72,6 +72,8 @@ object Utilities {
         map["toolbarIcon"] = "#404E56"
         map["icon"] = "#8E959B"
         map["primary"] = "#2196F3"
+        map["receiverText"] = "#424242"
+        map["receiverMessage"] = "#EEEEEE"
         return map
     }
 
@@ -85,6 +87,8 @@ object Utilities {
         map["toolbarIcon"] = "#FFFFFF"
         map["icon"] = "#738190"
         map["primary"] = "#2196F3"
+        map["receiverText"] = "#FFFFFF"
+        map["receiverMessage"] = "#272A31"
         return map
     }
 }

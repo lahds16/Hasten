@@ -11,6 +11,8 @@ object Theme {
     var toolbarIcon: Int = Color.WHITE
     var icon: Int = Color.WHITE
     var primary: Int = Color.WHITE
+    var receiverMessage: Int = Color.WHITE
+    var receiverText: Int = Color.WHITE
 
     fun bootTheme(theme: Map<String, String>) {
         background = getColor(theme["background"]!!)
@@ -21,6 +23,8 @@ object Theme {
         toolbarIcon = getColor(theme["toolbarIcon"]!!)
         icon = getColor(theme["icon"]!!)
         primary = getColor(theme["primary"]!!)
+        receiverText = getColor(theme["receiverText"]!!)
+        receiverMessage = getColor(theme["receiverMessage"]!!)
     }
 
     private fun getColor(color: String): Int {
