@@ -14,6 +14,7 @@ import lahds.hasten.R
 import lahds.hasten.databinding.LayoutChatBinding
 import lahds.hasten.ui.ChatActivity
 import lahds.hasten.ui.LaunchActivity
+import lahds.hasten.ui.components.Theme
 import lahds.hasten.ui.models.User
 import java.text.SimpleDateFormat
 import java.util.*
@@ -30,6 +31,8 @@ class ChatsAdapter(private var context: Context, private var chats: ArrayList<Us
         val user = chats[position]
         val senderId = FirebaseAuth.getInstance().uid
         val senderRoom = senderId + user.userId
+
+        holder.binding.textName.setTextColor(Theme.title)
         FirebaseDatabase.getInstance().reference
             .child("Chats")
             .child(senderRoom)

@@ -72,7 +72,8 @@ class MessagesAdapter(
         } else {
             viewHolder = holder as ReceiveViewHolder
             viewHolder.binding.textMessage.text = message.message
-            viewHolder.binding.drawable.adaptiveBubble(false, Theme.toolbar, position)
+            viewHolder.binding.textMessage.setTextColor(Theme.receiverText)
+            viewHolder.binding.drawable.adaptiveBubble(false, Theme.receiverMessage, position)
         }
     }
 

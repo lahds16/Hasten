@@ -39,7 +39,7 @@
                         android:scaleType="centerCrop"
                         android:visibility="gone"/>
 
-                    <TextView
+                    <com.vanniktech.emoji.EmojiTextView
                         android:id="@+id/text_avatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -60,7 +60,7 @@
                         android:orientation="horizontal"
                         android:gravity="center">
 
-                        <TextView
+                        <com.vanniktech.emoji.EmojiTextView
                             android:id="@+id/text_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -116,7 +116,14 @@
         android:padding="8dp"
         android:background="?colorSurface">
 
-        <EditText
+        <ImageView
+            android:id="@+id/input_emoji"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:tint="?attr/colorOnPrimary"
+            android:src="@drawable/input_emoji"/>
+
+        <com.vanniktech.emoji.EmojiEditText
             android:id="@+id/input_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

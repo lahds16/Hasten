@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.vanniktech.emoji.EmojiPopup
 import lahds.hasten.databinding.ActivityChatBinding
 import lahds.hasten.ui.adapters.MessagesAdapter
 import lahds.hasten.ui.components.BaseFragment
@@ -45,6 +46,11 @@ class ChatActivity : BaseFragment() {
     override fun initialize() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
+
+        val emojiPopup = EmojiPopup(binding.root, binding.inputMessage)
+        binding.inputEmoji.setOnClickListener {
+            emojiPopup.toggle()
+        }
 
         slowSmoothScroller = object : LinearSmoothScroller(requireContext()) {
             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
@@ -181,7 +187,7 @@ class ChatActivity : BaseFragment() {
 
     private fun initStatus() {
         binding.inputMessage.addTextChangedListener {
-            if (binding.inputMessage.text.isNotEmpty()) {
+            if (binding.inputMessage.text!!.isNotEmpty()) {
                 database.reference.child("Presence").child(senderRoom).setValue("typing...")
             } else {
                 database.reference.child("Presence").child(senderRoom).setValue("")
@@ -228,39 +234,39 @@ class ChatActivity : BaseFragment() {
                     } else {
                         val dateFormat = SimpleDateFormat("'last seen today at' hh:mm a", Locale.getDefault())
                         binding.textPresence.text = dateFormat.format(Date(globalData))
-                    }
-                    if (difference < 3.6e+6) {
-                        time = (difference/3.6e+6).toLong()
-                        if (time < 1) {
-                            binding.textPresence.text = "last seen within an hour"
+
+                        if (difference < 3.6e+6) {
+                            time = (difference/3.6e+6).toLong()
+                            if (time < 1) {
+                                binding.textPresence.text = "last seen within an hour"
+                            } else {
+                                val dateFormat = SimpleDateFormat("'last seen today at' hh:mm a", Locale.getDefault())
+                                binding.textPresence.text = dateFormat.format(Date(globalData))
+                            }
+                        } else if (difference < 8.64e+7) {
+                            time = (difference/8.64e+7).toLong()
+                            if (time == 1L) {
+                                val dateFormat = SimpleDateFormat("'last seen yesterday at' hh:mm a", Locale.getDefault())
+                                binding.textPresence.text = dateFormat.format(Date(globalData))
+                            } else if (time > 1) {
+                                val dateFormat = SimpleDateFormat("'last seen on' EEEE 'at' hh:mm a", Locale.getDefault())
+                                binding.textPresence.text = dateFormat.format(Date(globalData))
+                            }
+                        } else if (difference < 6.048e+8) {
+                            time = (difference/6.048e+8).toLong()
+                            if (time < 1L) {
+                                binding.textPresence.text = "last seen within a week"
+                            } else if (time > 1) {
+                                binding.textPresence.text = "last seen within a month"
+                            }
+                        } else if (difference < 2.628e+9) {
+                            time = (difference/2.628e+9).toLong()
+                            if (time < 1L) {
+                                binding.textPresence.text = "last seen within a month"
+                            } else if (time > 1) {
+                                binding.textPresence.text = "last seen a long time ago"
+                            }
                         } else {
-                            val dateFormat = SimpleDateFormat("'last seen today at' hh:mm a", Locale.getDefault())
-                            binding.textPresence.text = dateFormat.format(Date(globalData))
-                        }
-                    }
-                    if (difference < 8.64e+7) {
-                        time = (difference/8.64e+7).toLong()
-                        if (time == 1L) {
-                            val dateFormat = SimpleDateFormat("'last seen yesterday at' hh:mm a", Locale.getDefault())
-                            binding.textPresence.text = dateFormat.format(Date(globalData))
-                        } else if (time > 1) {
-                            val dateFormat = SimpleDateFormat("'last seen on' EEEE 'at' hh:mm a", Locale.getDefault())
-                            binding.textPresence.text = dateFormat.format(Date(globalData))
-                        }
-                    }
-                    if (difference < 6.048e+8) {
-                        time = (difference/6.048e+8).toLong()
-                        if (time < 1L) {
-                            binding.textPresence.text = "last seen within a week"
-                        } else if (time > 1) {
-                            binding.textPresence.text = "last seen within a month"
-                        }
-                    }
-                    if (difference < 2.628e+9) {
-                        time = (difference/2.628e+9).toLong()
-                        if (time < 1L) {
-                            binding.textPresence.text = "last seen within a month"
-                        } else if (time > 1) {
                             binding.textPresence.text = "last seen a long time ago"
                         }
                     }

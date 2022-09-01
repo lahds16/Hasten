@@ -23,7 +23,7 @@
             app:viewPartMain="@id/text_message"
             app:viewPartSlave="@id/layout_status">
 
-            <TextView
+            <com.vanniktech.emoji.EmojiTextView
                 android:id="@+id/text_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
