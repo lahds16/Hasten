@@ -51,7 +51,7 @@
                     android:id="@+id/text_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:padding="3dp"
                     android:textColor="?colorOnPrimary"
                     android:layout_weight="1"

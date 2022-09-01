@@ -11,6 +11,7 @@ import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCall
 import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityLoginBinding
 import lahds.hasten.ui.components.BaseFragment
+import lahds.hasten.ui.components.Theme
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : BaseFragment() {
@@ -113,5 +114,10 @@ class LoginActivity : BaseFragment() {
         Utilities.animateClick(binding.buttonContinue)
         Utilities.animateClick(binding.buttonCancel)
         Utilities.animateClick(binding.buttonVerify)
+    }
+
+    override fun updateViews() {
+        LaunchActivity.activity.window.statusBarColor = Theme.background
+        LaunchActivity.activity.window.navigationBarColor = Theme.background
     }
 }

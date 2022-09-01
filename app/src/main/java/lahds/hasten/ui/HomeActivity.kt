@@ -9,6 +9,7 @@ import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityHomeBinding
 import lahds.hasten.ui.adapters.ChatsAdapter
 import lahds.hasten.ui.components.BaseFragment
+import lahds.hasten.ui.components.Theme
 import lahds.hasten.ui.models.User
 
 class HomeActivity : BaseFragment() {
@@ -62,5 +63,10 @@ class HomeActivity : BaseFragment() {
     private fun initAnimations() {
         Utilities.animateClick(binding.fab)
         Utilities.animateClick(binding.avatar)
+    }
+
+    override fun updateViews() {
+        LaunchActivity.activity.window.statusBarColor = Theme.toolbar
+        LaunchActivity.activity.window.navigationBarColor = Theme.background
     }
 }

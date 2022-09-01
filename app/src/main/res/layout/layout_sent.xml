@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="2dp"
     android:layout_marginStart="50dp"
@@ -15,23 +16,49 @@
         android:layout_height="wrap_content"
         android:padding="4dp">
 
-        <TextView
-            android:id="@+id/text_message"
+        <lahds.hasten.ui.components.FlexibleLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:paddingStart="8dp"
-            android:paddingEnd="0dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/white"/>
-    </LinearLayout>
+            android:gravity="bottom|center"
+            app:viewPartMain="@id/text_message"
+            app:viewPartSlave="@id/layout_status">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Delivered at 2:00 PM"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:id="@+id/layout_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="2dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:alpha="0.8"/>
+
+                <ImageView
+                    android:id="@+id/message_status"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="4dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/message_sent"/>
+            </LinearLayout>
+        </lahds.hasten.ui.components.FlexibleLayout>
+    </LinearLayout>
 </LinearLayout>

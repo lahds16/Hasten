@@ -9,10 +9,11 @@
     android:gravity="center|start">
 
     <LinearLayout
+        android:id="@+id/drawable"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/text_message"

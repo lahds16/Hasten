@@ -21,7 +21,7 @@ class CreateChatActivity : BaseFragment() {
     }
 
     override fun updateViews() {
-        binding.toolbar.setBackgroundColor(Theme.background)
+        binding.toolbar.setBackgroundColor(Theme.toolbar)
         binding.toolbar.setNavigationIconTint(Theme.icon)
         binding.fab.backgroundTintList = ColorStateList.valueOf(Theme.primary)
     }

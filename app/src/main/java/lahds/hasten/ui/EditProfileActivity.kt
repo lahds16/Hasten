@@ -9,6 +9,7 @@ import com.google.firebase.database.ValueEventListener
 import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityEditProfileBinding
 import lahds.hasten.ui.components.BaseFragment
+import lahds.hasten.ui.components.Theme
 import lahds.hasten.ui.models.User
 
 class EditProfileActivity : BaseFragment() {
@@ -65,6 +66,9 @@ class EditProfileActivity : BaseFragment() {
                     .child("Users")
                     .child(userId)
                     .setValue(user)
+                    .addOnSuccessListener {
+                        LaunchActivity.presentFragment(HomeActivity())
+                    }
             }
         }
 
@@ -74,5 +78,10 @@ class EditProfileActivity : BaseFragment() {
                 binding.textAvatar.text = text[0].uppercase()
             }
         }
+    }
+
+    override fun updateViews() {
+        LaunchActivity.activity.window.statusBarColor = Theme.background
+        LaunchActivity.activity.window.navigationBarColor = Theme.background
     }
 }

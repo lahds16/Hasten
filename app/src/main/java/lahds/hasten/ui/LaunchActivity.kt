@@ -32,6 +32,9 @@ class LaunchActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
+        window.statusBarColor = Theme.background
+        window.navigationBarColor = Theme.background
+
         val container = findViewById<FrameLayout>(R.id.container)
         if (auth.currentUser != null) {
             database.reference.child("Users").child(auth.uid!!).
@@ -74,7 +77,7 @@ class LaunchActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         if (auth.currentUser != null) {
-            database.reference.child("Presence").child(auth.uid!!).setValue(System.currentTimeMillis().toString())
+            database.reference.child("Presence").child(auth.uid!!).setValue(System.currentTimeMillis())
         }
     }
 
