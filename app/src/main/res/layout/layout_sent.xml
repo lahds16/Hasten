@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:padding="2dp">
 
         <lahds.hasten.ui.components.FlexibleLayout
             android:layout_width="wrap_content"
@@ -28,8 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="4dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:textColor="@color/white"/>
@@ -40,14 +40,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:paddingEnd="8dp">
+                android:paddingEnd="4dp">
 
                 <TextView
                     android:id="@+id/timestamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="2dp"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textColor="@color/white"
                     android:alpha="0.8"/>
 

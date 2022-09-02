@@ -72,7 +72,12 @@ class MessagesAdapter(
         } else {
             viewHolder = holder as ReceiveViewHolder
             viewHolder.binding.textMessage.text = message.message
+
+            val dateFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
+            viewHolder.binding.timestamp.text = dateFormat.format(Date(message.timestamp))
+
             viewHolder.binding.textMessage.setTextColor(Theme.receiverText)
+            viewHolder.binding.timestamp.setTextColor(Theme.receiverText)
             viewHolder.binding.drawable.adaptiveBubble(false, Theme.receiverMessage, position)
         }
     }

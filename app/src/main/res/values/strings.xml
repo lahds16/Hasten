@@ -20,4 +20,10 @@
     <string name="search">Search</string>
     <string name="message">Message</string>
     <string name="create_group">Create group</string>
+    <string name="presence_now">last seen just now</string>
+    <string name="presence_long">last seen a long time ago</string>
+    <string name="presence_month">last seen within a month</string>
+    <string name="presence_week">last seen within a week</string>
+    <string name="presence_hour">last seen within a hour</string>
+    <string name="presence_minute">last seen within a minute</string>
 </resources>
