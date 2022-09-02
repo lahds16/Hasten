@@ -164,7 +164,7 @@ class MessagesAdapter(
                 if (messages.size > 1) {
                     if (position == 0) {
                         if (messages[position + 1].senderID == userId) {
-                            round(color, 40, 40, 20, 40)
+                            round(color, 40, 40, 40, 20)
                         } else {
                             round(color, 40, 40, 40, 40)
                         }

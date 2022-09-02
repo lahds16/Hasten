@@ -8,10 +8,14 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import lahds.hasten.app.utils.Utilities
 import lahds.hasten.databinding.ActivityLoginBinding
 import lahds.hasten.ui.components.BaseFragment
 import lahds.hasten.ui.components.Theme
+import lahds.hasten.ui.models.User
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : BaseFragment() {
@@ -68,7 +72,7 @@ class LoginActivity : BaseFragment() {
                         binding.code5.setText("${code[4]}")
                         binding.code6.setText("${code[5]}")
                         binding.buttonVerify.isEnabled = false
-                        verifyCode(code)
+                        signInWithPhoneAuthCredential(credential)
                     }
                 }
 
@@ -81,6 +85,7 @@ class LoginActivity : BaseFragment() {
                     super.onCodeSent(verificationId, token)
                     authenticationId = verificationId
                     Utilities.transition(binding.root)
+                    binding.buttonVerify.isEnabled = true
                     binding.layoutPhone.visibility = View.GONE
                     binding.layoutCode.visibility = View.VISIBLE
                 }
@@ -100,7 +105,20 @@ class LoginActivity : BaseFragment() {
             ) { task ->
                 if (task.isSuccessful) {
                     if (auth.currentUser != null) {
-                        LaunchActivity.presentFragment(EditProfileActivity(), false)
+                        database.reference.child("Users").child(LaunchActivity.auth.uid!!).
+                        addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                if (snapshot.exists()) {
+                                    val user = snapshot.getValue(User::class.java)
+                                    if (user != null) {
+                                        LaunchActivity.presentFragment(HomeActivity())
+                                    } else {
+                                        LaunchActivity.presentFragment(EditProfileActivity(), false)
+                                    }
+                                }
+                            }
+                            override fun onCancelled(error: DatabaseError) {}
+                        })
                     }
                 } else {
                     binding.buttonVerify.isEnabled = true

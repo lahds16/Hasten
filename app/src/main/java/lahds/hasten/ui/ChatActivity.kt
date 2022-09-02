@@ -201,26 +201,23 @@ class ChatActivity : BaseFragment() {
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        extPresence(globalData = snapshot.value!!)
+                        database.reference.child("Presence")
+                            .child(receiverRoom)
+                            .addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(roomSnapshot: DataSnapshot) {
+                                    if (roomSnapshot.exists()) {
+                                        extPresence(chatData = roomSnapshot.getValue(String::class.java)!!, snapshot.value!!)
+                                    }
+                                }
+                                override fun onCancelled(error: DatabaseError) {}
+                            })
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
-
-        database.reference.child("Presence")
-            .child(receiverRoom)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        extPresence(chatData = snapshot.getValue(String::class.java)!!)
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-
     }
 
-    private fun extPresence(chatData: String = "", globalData: Any = "last seen just now") {
+    private fun extPresence(chatData: String, globalData: Any) {
         if (chatData == "") {
             if (globalData is Long) {
                 val difference = System.currentTimeMillis().minus(globalData)
