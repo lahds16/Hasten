@@ -2,10 +2,6 @@
 
 A simple, secure and instant messaging application. It's cloudbased and free.
 
-## Notice
-
-I'm probably at school right now and can't do much 😔. I'll probably be active in like 3 months.
-
 ## Contribute
 
 Any small contributions are welcome please 😔.
